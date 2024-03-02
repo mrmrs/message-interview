@@ -27,17 +27,28 @@ const App = () => {
     let updatedMessages = [...messages, newQuestion]
     setMessages(updatedMessages)
     setQuestion("")
-    const response = await ask([...updatedMessages], animal)
-    const newResponse = {
-      from: "riddler",
-      content: response.content,
-      timestamp: new Date(),
-      proximity: response.proximity,
-    }
-    updatedMessages = [...updatedMessages, newResponse]
-    setMessages(updatedMessages)
+    try {
+      const response = await ask([...updatedMessages], animal)
+      const newResponse = {
+        from: "riddler",
+        content: response.content,
+        timestamp: new Date(),
+        proximity: response.proximity,
+      }
+      updatedMessages = [...updatedMessages, newResponse]
+      setMessages(updatedMessages)
 
-    setIsCorrect(response.isCorrect)
+      setIsCorrect(response.isCorrect)
+    } catch (error) {
+      const newResponse = {
+        from: "riddler",
+        content: "I'm sorry, something went wrong. Please try again.",
+        timestamp: new Date(),
+      }
+      updatedMessages = [...updatedMessages, newResponse]
+      setMessages(updatedMessages)
+      console.error(error)
+    }
   }
 
   return (
