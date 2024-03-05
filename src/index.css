@@ -1,79 +1,66 @@
+* * { transition: color .1s ease, background-color .2s ease, border-color .1s ease, fill .1s ease; box-sizing: border-box; } 
+html,
 body,
 #root {
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-
   margin: 0;
   padding: 0;
+  min-height: 100dvh;
 }
 
-.app {
-  background-color: #fff;
-
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  align-items: center;
+.app { 
+    min-height: 100dvh;
+    position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-}
-
-.chatWindow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.content { 
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 900;
+    transition: color .1s ease, background-color .2s ease;
 }
 
 .message {
-  width: 400px;
-  margin-bottom: 20px;
+    margin-bottom: 32px;
 
-  padding: 8px;
-
-  display: flex;
-  flex-direction: row-reverse;
-
-  gap: 8px;
 }
 
-.message.self {
-  flex-direction: row;
+.message-enter {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
 }
 
-.message .content {
-  padding: 8px;
-  flex-grow: 1;
-  background: lightblue;
+.message-enter-active {
+  opacity: 1;
 }
 
-.message.self .content {
-  background: lightgreen;
+/* Animate the messages when they leave */
+.message-exit {
+  opacity: 1;
 }
 
-.askQuestion {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.message-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
 }
 
-input {
-  font-size: x-large;
-  padding: 8px;
+input:focus { 
+
 }
 
-button {
-  font-size: x-large;
-  padding: 8px;
+input::placeholder {
+    color: rgba(255,255,255,.5);
 }
 
-.answer {
-  margin: 16px;
-  font-size: x-large;
-  color: white;
+.shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
 }
+
