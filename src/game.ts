@@ -17,7 +17,7 @@ export const ask = async (messages: MessageData[], animal: string) => {
     proximity = args.proximity
   }
 
-  const chatCompletion = await openai.beta.chat.completions.runTools({
+  const chatCompletion = await openai.chat.completions.runTools({
     model: "gpt-4-0125-preview",
     messages: [
       {
